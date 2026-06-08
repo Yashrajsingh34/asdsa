@@ -1,0 +1,398 @@
+DSA 20 Problems - Java (User Input Versions)
+
+1. Second Largest Element
+
+import java.util.*; class SecondLargest { public static void
+main(String[] args) { Scanner sc = new Scanner(System.in); int n =
+sc.nextInt(); int[] arr = new int[n]; for(int i=0;i<n;i++)
+arr[i]=sc.nextInt();
+
+        int first=Integer.MIN_VALUE, second=Integer.MIN_VALUE;
+        for(int num:arr){
+            if(num>first){
+                second=first;
+                first=num;
+            } else if(num>second && num!=first){
+                second=num;
+            }
+        }
+        System.out.println(second);
+    }
+
+}
+
+2. Palindrome Check
+
+import java.util.*; class PalindromeCheck { public static void
+main(String[] args) { Scanner sc=new Scanner(System.in); String
+str=sc.nextLine();
+
+        int i=0,j=str.length()-1;
+        boolean flag=true;
+
+        while(i<j){
+            if(str.charAt(i)!=str.charAt(j)){
+                flag=false;
+                break;
+            }
+            i++; j--;
+        }
+        System.out.println(flag?"Yes":"No");
+    }
+
+}
+
+3. Missing Number
+
+import java.util.*; class MissingNumber { public static void
+main(String[] args) { Scanner sc=new Scanner(System.in); int
+n=sc.nextInt(); int[] arr=new int[n-1]; for(int i=0;i<n-1;i++)
+arr[i]=sc.nextInt();
+
+        int sum=n*(n+1)/2;
+        int arrSum=0;
+        for(int num:arr) arrSum+=num;
+
+        System.out.println(sum-arrSum);
+    }
+
+}
+
+4. Reverse String
+
+import java.util.*; class ReverseString { public static void
+main(String[] args) { Scanner sc=new Scanner(System.in); String
+str=sc.nextLine(); char[] ch=str.toCharArray();
+
+        int i=0,j=ch.length-1;
+        while(i<j){
+            char temp=ch[i];
+            ch[i]=ch[j];
+            ch[j]=temp;
+            i++; j--;
+        }
+        System.out.println(new String(ch));
+    }
+
+}
+
+5. Count Vowels
+
+import java.util.*; class CountVowels { public static void main(String[]
+args) { Scanner sc=new Scanner(System.in); String str=sc.nextLine();
+
+        int count=0;
+        for(char c:str.toLowerCase().toCharArray()){
+            if("aeiou".indexOf(c)!=-1) count++;
+        }
+        System.out.println(count);
+    }
+
+}
+
+6. Kadane’s Algorithm
+
+import java.util.*; class Kadane { public static void main(String[]
+args) { Scanner sc=new Scanner(System.in); int n=sc.nextInt(); int[]
+arr=new int[n]; for(int i=0;i<n;i++) arr[i]=sc.nextInt();
+
+        int max=arr[0], sum=0;
+        for(int num:arr){
+            sum+=num;
+            max=Math.max(max,sum);
+            if(sum<0) sum=0;
+        }
+        System.out.println(max);
+    }
+
+}
+
+7. Move Zeroes
+
+import java.util.*; class MoveZeroes { public static void main(String[]
+args) { Scanner sc=new Scanner(System.in); int n=sc.nextInt(); int[]
+arr=new int[n]; for(int i=0;i<n;i++) arr[i]=sc.nextInt();
+
+        int j=0;
+        for(int i=0;i<n;i++){
+            if(arr[i]!=0){
+                int temp=arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+                j++;
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+
+}
+
+8. Remove Duplicates
+
+import java.util.*; class RemoveDuplicates { public static void
+main(String[] args) { Scanner sc=new Scanner(System.in); int
+n=sc.nextInt(); int[] arr=new int[n]; for(int i=0;i<n;i++)
+arr[i]=sc.nextInt();
+
+        int j=0;
+        for(int i=1;i<n;i++){
+            if(arr[i]!=arr[j]){
+                arr[++j]=arr[i];
+            }
+        }
+        System.out.println(Arrays.toString(Arrays.copyOf(arr,j+1)));
+    }
+
+}
+
+9. Binary Search
+
+import java.util.*; class BinarySearch { public static void
+main(String[] args) { Scanner sc=new Scanner(System.in); int
+n=sc.nextInt(); int[] arr=new int[n]; for(int i=0;i<n;i++)
+arr[i]=sc.nextInt();
+
+        int key=sc.nextInt();
+        int l=0,r=n-1;
+
+        while(l<=r){
+            int mid=(l+r)/2;
+            if(arr[mid]==key){
+                System.out.println(mid);
+                return;
+            } else if(arr[mid]<key) l=mid+1;
+            else r=mid-1;
+        }
+        System.out.println("Not Found");
+    }
+
+}
+
+10. Anagram Check
+
+import java.util.*; class Anagram { public static void main(String[]
+args) { Scanner sc=new Scanner(System.in); String a=sc.nextLine();
+String b=sc.nextLine();
+
+        char[] c1=a.toCharArray();
+        char[] c2=b.toCharArray();
+
+        Arrays.sort(c1);
+        Arrays.sort(c2);
+
+        System.out.println(Arrays.equals(c1,c2)?"Yes":"No");
+    }
+
+}
+
+11. Intersection of Arrays
+
+import java.util.*; class Intersection { public static void
+main(String[] args) { Scanner sc=new Scanner(System.in); int
+n1=sc.nextInt(); int[] a=new int[n1]; for(int i=0;i<n1;i++)
+a[i]=sc.nextInt();
+
+        int n2=sc.nextInt();
+        int[] b=new int[n2];
+        for(int i=0;i<n2;i++) b[i]=sc.nextInt();
+
+        Set<Integer> set=new HashSet<>();
+        for(int num:a) set.add(num);
+
+        for(int num:b){
+            if(set.contains(num)) System.out.print(num+" ");
+        }
+    }
+
+}
+
+12. First Non-Repeating Character
+
+import java.util.*; class FirstNonRepeating { public static void
+main(String[] args) { Scanner sc=new Scanner(System.in); String
+str=sc.nextLine(); int[] freq=new int[26];
+
+        for(char c:str.toCharArray()) freq[c-'a']++;
+
+        for(char c:str.toCharArray()){
+            if(freq[c-'a']==1){
+                System.out.println(c);
+                return;
+            }
+        }
+    }
+
+}
+
+13. Rotate Array
+
+import java.util.*; class RotateArray { public static void main(String[]
+args) { Scanner sc=new Scanner(System.in); int n=sc.nextInt(); int[]
+arr=new int[n]; for(int i=0;i<n;i++) arr[i]=sc.nextInt();
+
+        int k=sc.nextInt();
+        k%=n;
+
+        reverse(arr,0,n-1);
+        reverse(arr,0,k-1);
+        reverse(arr,k,n-1);
+
+        System.out.println(Arrays.toString(arr));
+    }
+
+    static void reverse(int[] arr,int l,int r){
+        while(l<r){
+            int temp=arr[l];
+            arr[l++]=arr[r];
+            arr[r--]=temp;
+        }
+    }
+
+}
+
+14. Selection Sort
+
+import java.util.*; class SelectionSort { public static void
+main(String[] args) { Scanner sc=new Scanner(System.in); int
+n=sc.nextInt(); int[] arr=new int[n]; for(int i=0;i<n;i++)
+arr[i]=sc.nextInt();
+
+        for(int i=0;i<n-1;i++){
+            int min=i;
+            for(int j=i+1;j<n;j++){
+                if(arr[j]<arr[min]) min=j;
+            }
+            int temp=arr[min];
+            arr[min]=arr[i];
+            arr[i]=temp;
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+
+}
+
+15. Balanced Parentheses
+
+import java.util.*; class BalancedParentheses { public static void
+main(String[] args) { Scanner sc=new Scanner(System.in); String
+s=sc.nextLine(); Stack st=new Stack<>();
+
+        for(char c:s.toCharArray()){
+            if(c=='(') st.push(c);
+            else if(c==')'){
+                if(st.isEmpty()){
+                    System.out.println("Not Balanced");
+                    return;
+                }
+                st.pop();
+            }
+        }
+        System.out.println(st.isEmpty()?"Balanced":"Not Balanced");
+    }
+
+}
+
+16. Factorial
+
+import java.util.; class Factorial { static int fact(int n){ if(n==0)
+return 1; return nfact(n-1); }
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        System.out.println(fact(n));
+    }
+
+}
+
+17. Fibonacci
+
+import java.util.*; class Fibonacci { static int fib(int n){ if(n<=1)
+return n; return fib(n-1)+fib(n-2); }
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        for(int i=0;i<n;i++){
+            System.out.print(fib(i)+" ");
+        }
+    }
+
+}
+
+18. Longest Common Prefix
+
+import java.util.*; class LCP { public static void main(String[] args) {
+Scanner sc=new Scanner(System.in); int n=sc.nextInt(); sc.nextLine();
+
+        String[] strs=new String[n];
+        for(int i=0;i<n;i++) strs[i]=sc.nextLine();
+
+        Arrays.sort(strs);
+        String first=strs[0];
+        String last=strs[n-1];
+
+        int i=0;
+        while(i<first.length() && i<last.length() && first.charAt(i)==last.charAt(i)){
+            i++;
+        }
+        System.out.println(first.substring(0,i));
+    }
+
+}
+
+19. Reverse Linked List
+
+import java.util.*; class ReverseLinkedList { static class Node{ int
+data; Node next; Node(int d){data=d;} }
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+
+        Node head=null, tail=null;
+        for(int i=0;i<n;i++){
+            int val=sc.nextInt();
+            Node newNode=new Node(val);
+            if(head==null){
+                head=tail=newNode;
+            } else{
+                tail.next=newNode;
+                tail=newNode;
+            }
+        }
+
+        Node prev=null, curr=head;
+        while(curr!=null){
+            Node next=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+        }
+
+        while(prev!=null){
+            System.out.print(prev.data+" ");
+            prev=prev.next;
+        }
+    }
+
+}
+
+20. Prime Check
+
+import java.util.*; class PrimeCheck { public static void main(String[]
+args) { Scanner sc=new Scanner(System.in); int n=sc.nextInt();
+
+        boolean isPrime=true;
+        if(n<=1) isPrime=false;
+
+        for(int i=2;i*i<=n;i++){
+            if(n%i==0){
+                isPrime=false;
+                break;
+            }
+        }
+        System.out.println(isPrime?"Yes":"No");
+    }
+
+}
